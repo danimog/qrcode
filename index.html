@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/stile.css">
+
+
+    <title>codice QR in JS</title>
+  </head>
+
+    <body>
+        <div class="navbar container">
+            <img src="images/logoParco.jpg" width="120px;">
+            <h2 style="margin-left: 3rem;">Crea il tuo codice QR</h2>
+        </div>
+        <hr>
+
+        <div class="container">
+            
+            <form>
+                <div class="row">
+                    <div class="col-30">
+                        <label class="col" for="nome">Nome</label>
+                    </div>
+                    <div class="col-70">
+                        <input class="col" type="text" class="form-control" id="nome">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-30">
+                        <label class="col"  for="cognome">Cognome</label>
+                    </div>
+                    <div class="col-70">
+                        <input class="col"  type="text" class="form-control" id="cognome">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-30">
+                        <label class="col"  for="email">Email</label>
+                    </div>
+                    <div class="col-70">
+                        <input class="col"  type="email" class="form-control" id="email">    
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <input type="checkbox" class="form-check-input" id="checkGdpr">
+                    <label class="form-check-label" for="checkGdpr">Acconsento al trattamento dei dati secondo quanto disposto dal Regolamento EU - GDPR</label>
+                </div>
+                <div class="row button-row">
+                    <input type="button" onclick="makeCode()" class="my-button" value="Crea il codice QR">
+                </div>
+            </form>
+
+            <div id="qrcode" style="width: 300px; height: 300px; margin: 2rem auto;"></div>
+        </div>
+    </body>
+
+<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+
+var qrcode = new QRCode("qrcode");
+
+function makeCode () {      
+    var nome = document.getElementById("nome").value;
+    var cognome = document.getElementById("cognome").value;
+    var email = document.getElementById("email").value;
+
+    if ((nome != "") && (cognome != "")){
+        if (email.includes("@")){
+            if (document.getElementById("checkGdpr").checked){
+                elText = nome+"+"+cognome+"+"+email
+                console.log(elText);
+
+                qrcode.makeCode(elText);
+            }
+            else{
+                alert("Acconsentire al trattamento dei dati!")
+            }
+        } else{
+            alert("Inserire un indirizzo email valido");
+        }
+    }
+}
+
+makeCode();
+
+</script>
+
+
+</html>

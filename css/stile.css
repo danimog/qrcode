@@ -1,0 +1,68 @@
+body{
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 18px;
+}
+
+.navbar{
+    display: flex;
+    align-items: baseline;
+}
+
+.container{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.col-30 {
+    float: left;
+    width: 30%;
+}
+
+.col-70 {
+    float: left;
+    width: 70%;
+}
+
+ .row:after {
+    content: "";
+    display: table;
+    clear: both;
+} 
+
+input[type=text], input[type=email] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    font-size: 16px;
+  }
+  
+label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+    
+}
+
+.my-button{
+    background-color: darkblue;
+    color: white;
+    border: 1px solid white;
+    border-radius: 0%;
+    font-size: 14px;
+    padding: .7rem;
+}
+
+.button-row{
+    text-align: center;
+    margin-top: .5rem;
+}
+
+@media screen and (max-width: 800px) {
+    .col-30, .col-70, input[type=submit] {
+      width: 80%;
+      padding: .1rem;
+      margin-top: 0;
+    }
+}
